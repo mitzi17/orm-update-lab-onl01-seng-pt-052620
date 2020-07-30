@@ -64,10 +64,11 @@ class Student
     SELECT *
     FROM students
     WHERE name = ?
+    LIMIT 1
     SQL
     
-    self.new_from_db(name)
     DB[:conn].execute(sql, name)
+    self.new_from_db(row)
   end
   
   
